@@ -5,4 +5,4 @@ Simple Telegram bot to get posts from a custom subreddit.
 Just change the token and subreddit from `run.sh` to your telegram bot token and the desired subreddit, whithout the `/r/`.
 
 
-Feel free to make ask any questions or make any suggestions or pull requests.
+Feel free to ask me any questions or make any suggestions or pull requests.
