@@ -41,14 +41,14 @@ def help(bot, update):
     bot.send_message(chat_id=update.message.chat_id, text=helpMsg)
 
 
-def last_pic(bot, update):
+def last_post(bot, update):
     data = feedparser.parse(subredditUrl%(botArgs.subreddit)+'.rss')
     link = data.entries[0]['content'][0]['value']
     root = ET.fromstring(link)
     bot.send_message(chat_id=update.message.chat_id, text=root.xpath("//a")[2].get("href"))
 
 
-def random_pic(bot, update):
+def random_post(bot, update):
     data = feedparser.parse(subredditUrl%(botArgs.subreddit)+'.rss')
     entrie = random.randint(0,len(data.entries))
     link = data.entries[entrie]['content'][0]['value']
@@ -68,8 +68,8 @@ def main():
     updater = Updater(botArgs.token)
     updater.dispatcher.add_handler(CommandHandler('start', start))
     updater.dispatcher.add_handler(CommandHandler('help', help))
-    updater.dispatcher.add_handler(CommandHandler('last', last_pic))
-    updater.dispatcher.add_handler(CommandHandler('random', random_pic))
+    updater.dispatcher.add_handler(CommandHandler('last', last_post))
+    updater.dispatcher.add_handler(CommandHandler('random', random_post))
     updater.dispatcher.add_handler(CommandHandler('which', which_subreddit))
 
     
